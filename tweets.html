@@ -1,0 +1,71 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery TweeCool Plugin Demo</title>
+<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="tweecool.js"></script>
+<style>
+.twitter-widget ul {
+margin: 0;
+padding: 0;
+}
+.twitter-widget li {
+list-style: none;
+clear: both;
+}
+.twitter-widget li img, .twitter-widget li .tweets_txt {
+float: left;
+margin-bottom: 10px;
+}
+.twitter-widget li img {
+-webkit-border-radius: 30px;
+-moz-border-radius: 30px;
+border-radius: 30px;
+}
+.twitter-widget li .tweets_txt {
+width: 350px;
+margin-left: 10px;
+}
+.twitter-widget li .tweets_txt span {
+font-style: italic;
+color: #666;
+display: block;
+}
+</style>
+</head>
+
+<body>
+  <a href="index.html">Go to home</a>
+
+<div class="twitter-widget">
+<div id="tweecool"></div>
+</div>
+<script>
+  $(document).ready(function() {
+      $('#tweecool').tweecool({
+        //settings
+         username : 'jaeveedee',
+         limit : 1
+      });
+  });
+  </script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>
