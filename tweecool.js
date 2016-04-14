@@ -27,6 +27,16 @@
 			}
 
 			var options = $.extend(defaults, options);
+			
+			var contentString = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h1 id="firstHeading" class="firstHeading">Tweet Text for Tree</h1>'+
+      '<div id="bodyContent">'+
+      '<p><b>Tree 1</b>, also referred to as <b>White Oak</b>, thinks that' +
+      'TWEET TEXT HERE'.</p>'+
+      '</div>'+
+      '</div>';
 
 			function xTimeAgo(time) {
 				var nd = new Date();
