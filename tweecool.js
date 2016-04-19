@@ -62,7 +62,7 @@
 			return this.each(function() {
 				var o = options;
 				var wrapper = $(this);
-				var wInner = $('<ul>').appendTo(wrapper);
+				var wInner = $('<div>').appendTo(wrapper);
 				var urlpattern = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
 				var usernamepattern = /@+(\w+)/ig;
 				var hashpattern = /#+(\w+)/ig;
@@ -115,7 +115,7 @@
                                                    mtext =  field.text;
                                                 }
                                                 
-						wInner.append('<li>' + pIMG + '<div class="tweets_txt">' + mtext.replace(urlpattern, '<a href="$1" target="_blank">$1</a>').replace(usernamepattern, '<a href="https://twitter.com/$1" target="_blank">@$1</a>').replace(hashpattern, '<a href="https://twitter.com/search?q=%23$1" target="_blank">#$1</a>') + media + ' <span>' + timestamp + '</span>'+abox+'</div></li>');
+						wInner.append( pIMG + '<div class="tweets_txt">' + mtext.replace(urlpattern, '<a href="$1" target="_blank">$1</a>').replace(usernamepattern, '<a href="https://twitter.com/$1" target="_blank">@$1</a>').replace(hashpattern, '<a href="https://twitter.com/search?q=%23$1" target="_blank">#$1</a>') + media + ' <span>' + timestamp + '</span>'+abox+'</div>');
 					});
 
 				}).fail(function(jqxhr, textStatus, error) {
