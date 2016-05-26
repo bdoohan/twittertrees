@@ -1,123 +1,272 @@
 /*Name : TweeCool
- *version: 1.8 
+ *version: 1.9 
  *Description: Get the latest tweets from twitter.
  *Website: www.tweecool.com
  *Licence: No licence, feel free to do whatever you want.
  *Author: TweeCool
  */
- (function($) {
- 	$.fn.extend({
+ var tweetText;
+ var wInner;
 
- 		tweecool : function(options) {
+ var stringy;
 
- 			var defaults = {
- 				username : 'hclmusic',
- 				limit : 5,
- 				profile_image : false,
- 				show_time : true,
- 				show_media : false,
-                show_media_size: 'thumb',  //values: small, large, thumb, medium 
-                show_actions: false,
-                action_reply_icon: '&crarr;',
-                action_retweet_icon: '&prop;',
-                action_favorite_icon: '&#9733;',
-                profile_img_url: 'profile', //Values: profile, tweet 
-                show_retweeted_text: false //This will show the original tweet in order to avoid any truncated text, and also the "RT @tweecool:" is removed which helps with 140 character limit
-            }
+ var treeArray = [["Danny_TS1", [-74.0575039, 40.7472462], ""], ["TS_Arlene",[-74.106226, 40.709112], ""], ["TS_Beatrice", [-74.047021, 40.723329], ""]];
 
-            var options = $.extend(defaults, options);
+ var myMarkers;
+var myLayer;
 
-            var contentString = '<div id="content">'+'<div id="siteNotice">'+'</div>'+'<h1 id="firstHeading" class="firstHeading">Tweet Text for Tree</h1>'+'<div id="bodyContent">'+'<p><b>Tree 1</b>, also referred to as <b>White Oak</b>, thinks that' + 'TWEET TEXT HERE'+'.</p>'+'</div>'+ '</div>';
-            function xTimeAgo(time) {
+var tweetArray = new Array(); 
 
-            	var nd = new Date();
-				//var gmtDate = Date.UTC(nd.getFullYear(), nd.getMonth(), nd.getDate(), nd.getHours(), nd.getMinutes(), nd.getMilliseconds());
-				var gmtDate = Date.parse(nd);
-				var tweetedTime = time * 1000; //convert seconds to milliseconds
-				var timeDiff = (gmtDate - tweetedTime) / 1000; //convert milliseconds to seconds
-				
-				var second = 1, minute = 60, hour = 60 * 60, day = 60 * 60 * 24, week = 60 * 60 * 24 * 7, month = 60 * 60 * 24 * 30, year = 60 * 60 * 24 * 365;
+var whichTree = 0;
 
-				if (timeDiff > second && timeDiff < minute) {
-					return Math.round(timeDiff / second) + " second"+(Math.round(timeDiff / second) > 1?'s':'')+" ago";
-				} else if (timeDiff >= minute && timeDiff < hour) {
-					return Math.round(timeDiff / minute) + " minute"+(Math.round(timeDiff / minute) > 1?'s':'')+" ago";
-				} else if (timeDiff >= hour && timeDiff < day) {
-					return Math.round(timeDiff / hour) + " hour"+(Math.round(timeDiff / hour) > 1?'s':'' )+" ago";
-				} else if (timeDiff >= day && timeDiff < week) {
-					return Math.round(timeDiff / day) + " day"+(Math.round(timeDiff / day) > 1 ?'s':'')+" ago";
-				} else if (timeDiff >= week && timeDiff < month) {
-					return Math.round(timeDiff / week) + " week"+(Math.round(timeDiff / week) > 1?'s':'')+" ago";
-				} else if (timeDiff >= month && timeDiff < year) {
-					return Math.round(timeDiff / month) + " month"+(Math.round(timeDiff / month) > 1 ?'s':'')+" ago";
-				} else {
-					return 'over a year ago';
-				}
-			}
+ console.log(treeArray.length);
 
-			return this.each(function() {
-				var o = options;
-				var wrapper = $(this);
-				var wInner = $('<div>').appendTo(wrapper);
-				var urlpattern = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
-				var usernamepattern = /@+(\w+)/ig;
-				var hashpattern = /#+(\w+)/ig;
-				var pIMG, media, timestamp, abox, mtext;
+ //treeArray[0][0] = the tree name
+ //treeArray[0][1][0] or treeArray[0][1][1] = lat and long
+ //treeArray[0][2] = tweet text
 
-				$.getJSON("https://www.api.tweecool.com/?screenname=" + o.username + "&count=" + o.limit, function(data) {
 
-					if (data.errors || data == null) {
-						wrapper.html('No tweets available.');
-						return false;
+ $.fn.extend({
+
+ 	tweecool : function(options) {
+
+
+ 		var defaults = {
+ 			username : 'jaeveedee',
+ 			limit : 1,
+ 			profile_image : false,
+ 			show_time : true,
+ 			show_media : false,
+            show_media_size: 'thumb',  //values: small, large, thumb, medium 
+            show_actions: false,
+            action_reply_icon: '&crarr;',
+            action_retweet_icon: '&prop;',
+            action_favorite_icon: '&#10084',
+            profile_img_url: 'profile', //Values: profile, tweet 
+            show_retweeted_text: false //This will show the original tweet in order to avoid any truncated text, and also the "RT @tweecool:" is removed which helps with 140 character limit
+        }
+        var options = $.extend(defaults, options);
+
+        function xTimeAgo(time) {
+        	var nd = new Date();
+        	//var gmtDate = Date.UTC(nd.getFullYear(), nd.getMonth(), nd.getDate(), nd.getHours(), nd.getMinutes(), nd.getMilliseconds());
+        	var gmtDate = Date.parse(nd);
+        	var tweetedTime = time * 1000; //convert seconds to milliseconds
+        	var timeDiff = (gmtDate - tweetedTime) / 1000; //convert milliseconds to seconds
+        	var second = 1, minute = 60, hour = 60 * 60, day = 60 * 60 * 24, week = 60 * 60 * 24 * 7, month = 60 * 60 * 24 * 30, year = 60 * 60 * 24 * 365;
+
+        	if (timeDiff > second && timeDiff < minute) {
+        		return Math.round(timeDiff / second) + " second"+(Math.round(timeDiff / second) > 1?'s':'')+" ago";
+        	} else if (timeDiff >= minute && timeDiff < hour) {
+        		return Math.round(timeDiff / minute) + " minute"+(Math.round(timeDiff / minute) > 1?'s':'')+" ago";
+        	} else if (timeDiff >= hour && timeDiff < day) {
+        		return Math.round(timeDiff / hour) + " hour"+(Math.round(timeDiff / hour) > 1?'s':'' )+" ago";
+        	} else if (timeDiff >= day && timeDiff < week) {
+        		return Math.round(timeDiff / day) + " day"+(Math.round(timeDiff / day) > 1 ?'s':'')+" ago";
+        	} else if (timeDiff >= week && timeDiff < month) {
+        		return Math.round(timeDiff / week) + " week"+(Math.round(timeDiff / week) > 1?'s':'')+" ago";
+        	} else if (timeDiff >= month && timeDiff < year) {
+        		return Math.round(timeDiff / month) + " month"+(Math.round(timeDiff / month) > 1 ?'s':'')+" ago";
+        	} else {
+        		return 'over a year ago';
+        	}
+        }
+        return this.each(function() {
+        	var o = options;
+        	var wrapper = $(this);
+        	wInner = wrapper;  //$('<ul>').appendTo(wrapper);
+        	var urlpattern = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+        	var usernamepattern = /@+(\w+)/ig;
+        	var hashpattern = /#+(\w+)/ig;
+        	var pIMG, media, timestamp, abox, mtext;
+
+        	$.getJSON("https://www.api.tweecool.com/?screenname=" + o.username + "&count=" + o.limit, function(data) {
+        		if (data.errors || data == null) {
+        			if (data.errors) {
+        				wrapper.html(data.errors);
+        			} else {
+        				wrapper.html('No tweets available 100.');
+        			}
+        			return false;
+        		}
+        		$.each(data.tweets, function(i, field) {
+        			if (o.profile_image) {
+        				if( o.profile_img_url == 'tweet' ){
+        					pIMG = '<a href="https://twitter.com/' + o.username + '/status/'+field.id_str+'" target="_blank"><img src="' + data.user.profile_image_url + '" alt="' + o.username + '" /></a>';
+        				} else {
+        					pIMG = '<a href="https://twitter.com/' + o.username + '" target="_blank"><img src="' + data.user.profile_image_url + '" alt="' + o.username + '" /></a>';
+        				}
+        			} else {
+        				pIMG = '';
+        			}
+
+        			if (o.show_time) {
+        				timestamp = xTimeAgo(field.timestamp);
+        			} else {
+        				timestamp = '';
+        			}
+
+        			if (o.show_media && field.media_url){
+
+        				media = '<a href="https://twitter.com/' + o.username + '/status/'+field.id_str+'" target="_blank"><img src="' + field.media_url + ':'+o.show_media_size+'" alt="' + o.username + '" class="media" /></a>';
+
+        			} else {
+
+        				media = '';
+
+        			}
+
+        			if( o.show_actions ){
+        				abox = '<div class="action-box"><ul>';
+        				abox += '<li class="ab_reply"><a title="Reply" href="https://twitter.com/intent/tweet?in_reply_to='+field.id_str+'">'+o.action_reply_icon+'</a></li>';
+						abox += '<li class="ab_retweet"><a title="Retweet" href="https://twitter.com/intent/retweet?tweet_id='+field.id_str+'">'+o.action_retweet_icon+'</a>'+( field.retweet_count_f != '' ?'<span>'+field.retweet_count_f+'</span>':'' )+'</li>';
+						abox += '<li class="ab_favorite"><a title="Favorite" href="https://twitter.com/intent/favorite?tweet_id='+field.id_str+'">'+o.action_favorite_icon+'</a>'+( field.favorite_count_f != '' ?'<span>'+field.favorite_count_f+'</span>':'' )+'</li>';
+						abox += '</ul></div>';
+
+					} else {
+						abox = '';
+
 					}
 
-					$.each(data.tweets, function(i, field) {
+					if ( o.show_retweeted_text && field.retweeted_text ){
 
-						if (o.profile_image) {
-							if( o.profile_img_url == 'tweet' ){
-								pIMG = '<a href="https://twitter.com/' + o.username + '/status/'+field.id_str+'" target="_blank"><img src="' + data.user.profile_image_url + '" alt="' + o.username + '" /></a>';
-							}else{
-								pIMG = '<a href="https://twitter.com/' + o.username + '" target="_blank"><img src="' + data.user.profile_image_url + '" alt="' + o.username + '" /></a>';
-							}
-						}else{
-							pIMG = ''; 
-						}
+						mtext = field.retweeted_text;
 
-						if (o.show_time) {
-							timestamp = xTimeAgo(field.timestamp);
-						}else{
-							timestamp = ''; 
-						}
+					} else {
 
-						if(o.show_media && field.media_url){
-							media = '<a href="https://twitter.com/' + o.username + '/status/'+field.id_str+'" target="_blank"><img src="' + field.media_url + ':'+o.show_media_size+'" alt="' + o.username + '" class="media" /></a>';
-						}else{
-							media = ''; 
-						}
+						mtext =  field.text;
+					}
 
-						if( o.show_actions ){
-							abox = '<div class="action-box"><ul>';
-							abox += '<li class="ab_reply"><a title="Reply" href="https://twitter.com/intent/tweet?in_reply_to='+field.id_str+'">'+o.action_reply_icon+'</a></li>';
-							abox += '<li class="ab_retweet"><a title="Retweet" href="https://twitter.com/intent/retweet?tweet_id='+field.id_str+'">'+o.action_retweet_icon+'</a>'+( field.retweet_count_f != '' ?'<span>'+field.retweet_count_f+'</span>':'' )+'</li>';
-							abox += '<li class="ab_favorite"><a title="Favorite" href="https://twitter.com/intent/favorite?tweet_id='+field.id_str+'">'+o.action_favorite_icon+'</a>'+( field.favorite_count_f != '' ?'<span>'+field.favorite_count_f+'</span>':'' )+'</li>';
-							abox += '</ul></div>';
-						}else{
-							abox = '';  
-						}
+					wInner.append('<div class="tweets_txt">' + mtext.replace(urlpattern, '<a href="$1" target="_blank">$1</a>').replace(usernamepattern, '<a href="https://twitter.com/$1" target="_blank">@$1</a>').replace(hashpattern, '<a href="https://twitter.com/search?q=%23$1" target="_blank">#$1</a>') + media + ' <span>' + timestamp + '</span>' +abox+'</div>');
+					stringy = '<div class="tweets_txt">' + mtext.replace(urlpattern, '<a href="$1" target="_blank">$1</a>').replace(usernamepattern, '<a href="https://twitter.com/$1" target="_blank">@$1</a>').replace(hashpattern, '<a href="https://twitter.com/search?q=%23$1" target="_blank">#$1</a>') + media + ' <span>' + timestamp + '</span>' +abox+'</div>';
+					
+					setTweets(stringy);
+					
+				});}).fail(function(jqxhr, textStatus, error) {
+				//var err = textStatus + ', ' + error;
+				wrapper.html('No tweets available 2');
+			});
 
-						if( o.show_retweeted_text && field.retweeted_text ){
-							mtext = field.retweeted_text;  
-						}else{
-							mtext =  field.text;
-						}
-
-						wInner.append( pIMG + '<div class="tweets_txt">' + mtext.replace(urlpattern, '<a href="$1" target="_blank">$1</a>').replace(usernamepattern, '<a href="https://twitter.com/$1" target="_blank">@$1</a>').replace(hashpattern, '<a href="https://twitter.com/search?q=%23$1" target="_blank">#$1</a>') + media + ' <span>' + timestamp + '</span>'+abox+'</div>');
-					});}).fail(function(jqxhr, textStatus, error) {
-					//var err = textStatus + ', ' + error;
-					wrapper.html('No tweets available');
-				});
-				});
-}
+		});
+	}
 });
 
-})(jQuery); 
+
+
+L.mapbox.accessToken = 'pk.eyJ1IjoiamFldmVlZGVlIiwiYSI6ImNpbmFxMmJ0MTBoa3p2OGtxbDAzZm5lMHIifQ.CIJDwn3mJ-kDaE8k0jUXpg';
+var map = L.mapbox.map('map', 'mapbox.streets').setView([40.709112,-74.106226], 12);
+
+
+var treeName = "jaeveedee";
+
+
+
+
+
+var getTweets = function(){
+$('#tweecool').tweecool({
+      //settings
+      username : treeArray[whichTree][0], 
+      limit : 1    
+  });
+
+}
+
+
+
+
+var setTweets = function(theTweet) {
+	treeArray[whichTree][2] = theTweet;
+	
+	console.log(treeArray[whichTree][0]);
+	console.log(whichTree);
+
+	if (whichTree < (treeArray.length - 1)) {
+		whichTree++;
+
+		getTweets();
+
+
+	} else {
+
+		setMarkers();
+	}
+	
+
+
+
+
+}
+
+
+var setMarkers = function(){
+	console.log("here");
+	console.log(treeArray[0][0]);
+
+
+	myMarkers = [
+	{
+		"type": "Feature",
+		"geometry": {
+			"type": "Point",
+			"coordinates": [treeArray[0][1][0],treeArray[0][1][1]]
+		},
+		"properties": {
+			"title": treeArray[0][0],
+			"description": treeArray[0][2],
+			"marker-color": "#3ca0d3",
+			"marker-size": "large",
+			"marker-symbol": "park"
+		}
+	},
+
+	{
+		"type": "Feature",
+		"geometry": {
+			"type": "Point",
+			"coordinates": [treeArray[1][1][0],treeArray[1][1][1]]
+		},
+		"properties": {
+			"title": treeArray[1][0],
+			"description": treeArray[1][2],
+			"marker-color": "#3ca0d3",
+			"marker-size": "large",
+			"marker-symbol": "park"
+		}
+	},
+	{
+		"type": "Feature",
+		"geometry": {
+			"type": "Point",
+			"coordinates": [treeArray[2][1][0],treeArray[2][1][1]]
+		},
+		"properties": {
+			"title": treeArray[2][0],
+			"description": treeArray[2][2],
+			"marker-color": "#3ca0d3",
+			"marker-size": "large",
+			"marker-symbol": "park"
+		}
+	}
+
+	];
+
+
+
+
+	myLayer = L.mapbox.featureLayer().setGeoJSON(myMarkers).addTo(map);
+
+    map.fitBounds(myLayer.getBounds());
+
+	
+
+}
+
+getTweets();
+
+
+
+
+
+
+

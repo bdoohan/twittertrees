@@ -1,8 +1,171 @@
-#map {
-    width: 100%;
-    height: 400px;
-    background-color: #CCC;
-  }
+* {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0;
+}
+
+body { 
+	margin:0; 
+	padding:0; 
+	font-family: 'Lato', sans-serif;
+}
+
+header {
+	
+	width: 100%;
+	background-color: white;
+	position: relative;
+	z-index: 200;
+}
+
+/*#main-title {
+	padding: 20px 0;
+	margin: 0;
+	text-align: center;
+	font-weight: 300;
+	font-size: 2em;
+}*/
+
+#main-logo {
+	display: block;
+	margin: 0 auto;
+	padding-top: 10px;
+	width: 200px;
+}
+
+.menu {
+	display: block;
+	text-align: center;
+	margin: 0;
+
+	padding: 10px 0;
+
+	overflow: visible;
+	text-transform: uppercase;
+}
 
 
-#mapid { height: 180px; }
+.menu li a {
+	text-decoration: none;
+	color: black;
+	
+}
+
+
+#big-nav {
+	display: none;
+}
+
+#mobile-nav {
+	
+}
+
+
+#mobile-nav .menu-item {
+	display: none;
+	padding: 10px 0;
+	
+	background-color: white;
+}
+#mobile-nav #menu-bars {
+		display: inline-block;
+	}
+
+#mobile-nav .menu-item a {
+	
+	
+	padding: 5px 10px;
+}
+
+#mobile-nav .menu-item a:hover {
+	border-right: 1px solid black;
+	border-left: 1px solid black;
+
+	
+}
+
+#social {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+
+#social li {
+	display: inline-block;
+}
+
+#social li a {
+	text-transform: uppercase;
+	padding: 10px 5px;
+	font-size: 2em;
+}
+
+#map { 
+	position:absolute; 
+	top:122px; 
+	bottom:39px;
+	width: 100%;
+	z-index: 0;
+	
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	
+	width: 100%;
+	text-align: center;
+}
+
+footer p {
+	padding: 10px 0;
+	font-size: .7em;
+}
+
+#tweecool {
+	display: none;
+}
+
+@media (min-width: 768px) {
+
+	
+
+	header {
+		
+	}
+	#main-logo {
+		width: 300px;
+	}
+#mobile-nav {
+		display: none;
+	}
+	#big-nav {
+		display: block;
+	}
+	#big-nav .menu-item {
+		padding: 0 10px;
+	display: inline-block;
+}
+
+	#mobile-nav #menu-bars {
+		display: none;
+	}
+
+	#big-nav li a:hover {
+	border-bottom: 1px solid black;
+	border-top: 1px solid black;
+
+	
+}
+
+	#map { 
+	top:159px; 
+	bottom:39px;
+
+	
+}
+
+
+
+
+}
