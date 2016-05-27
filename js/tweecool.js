@@ -5,28 +5,39 @@
  *Licence: No licence, feel free to do whatever you want.
  *Author: TweeCool
  */
- var tweetText;
- var wInner;
 
- var stringy;
+// for tweecool
+var wInner;
+var stringy;
 
- var treeArray = [["Danny_TS1", [-74.0575039, 40.7472462], ""], ["TS_Arlene",[-74.106226, 40.709112], ""], ["TS_Beatrice", [-74.047021, 40.723329], ""]];
-
- var myMarkers;
+// setting up the map
+var myMarkers;
 var myLayer;
+L.mapbox.accessToken = 'pk.eyJ1IjoiamFldmVlZGVlIiwiYSI6ImNpbmFxMmJ0MTBoa3p2OGtxbDAzZm5lMHIifQ.CIJDwn3mJ-kDaE8k0jUXpg';
+var map = L.mapbox.map('map', 'mapbox.streets').setView([40.709112,-74.106226], 12);
 
-var tweetArray = new Array(); 
-
+//iterating through the trees
 var whichTree = 0;
 
- console.log(treeArray.length);
+//set up the markers
+var markerColor = "#24d20f";
+var markerSize = "large";
+var markerSymbol = "park";
 
- //treeArray[0][0] = the tree name
- //treeArray[0][1][0] or treeArray[0][1][1] = lat and long
- //treeArray[0][2] = tweet text
+
+//add the trees to an array
+var treeArray = [["Danny_TS1", [-74.0575039, 40.7472462], ""], ["TS_Arlene",[-74.106226, 40.709112], ""], ["TS_Beatrice", [-74.047021, 40.723329], ""]];
+
+// ["username", [-74.0575039, 40.7472462], ""]   leave the last spot blank, that is assigned later.
+
+// how to get the tree info
+// treeArray[0][0] = the tree name
+// treeArray[0][1][0] or treeArray[0][1][1] = lat and long
+// treeArray[0][2] = tweet text
 
 
- $.fn.extend({
+//get the tweets from twitter
+$.fn.extend({
 
  	tweecool : function(options) {
 
@@ -138,8 +149,10 @@ var whichTree = 0;
 					}
 
 					wInner.append('<div class="tweets_txt">' + mtext.replace(urlpattern, '<a href="$1" target="_blank">$1</a>').replace(usernamepattern, '<a href="https://twitter.com/$1" target="_blank">@$1</a>').replace(hashpattern, '<a href="https://twitter.com/search?q=%23$1" target="_blank">#$1</a>') + media + ' <span>' + timestamp + '</span>' +abox+'</div>');
+					//set the tweet text to html
 					stringy = '<div class="tweets_txt">' + mtext.replace(urlpattern, '<a href="$1" target="_blank">$1</a>').replace(usernamepattern, '<a href="https://twitter.com/$1" target="_blank">@$1</a>').replace(hashpattern, '<a href="https://twitter.com/search?q=%23$1" target="_blank">#$1</a>') + media + ' <span>' + timestamp + '</span>' +abox+'</div>';
 					
+					//set the tweets to the array
 					setTweets(stringy);
 					
 				});}).fail(function(jqxhr, textStatus, error) {
@@ -153,17 +166,10 @@ var whichTree = 0;
 
 
 
-L.mapbox.accessToken = 'pk.eyJ1IjoiamFldmVlZGVlIiwiYSI6ImNpbmFxMmJ0MTBoa3p2OGtxbDAzZm5lMHIifQ.CIJDwn3mJ-kDaE8k0jUXpg';
-var map = L.mapbox.map('map', 'mapbox.streets').setView([40.709112,-74.106226], 12);
 
-
-var treeName = "jaeveedee";
-
-
-
-
-
+//run our tweet getting function
 var getTweets = function(){
+
 $('#tweecool').tweecool({
       //settings
       username : treeArray[whichTree][0], 
@@ -172,33 +178,30 @@ $('#tweecool').tweecool({
 
 }
 
-
-
-
+//set the tweet text
 var setTweets = function(theTweet) {
+
+	//assign the tweet to the array spot
 	treeArray[whichTree][2] = theTweet;
-	
-	console.log(treeArray[whichTree][0]);
-	console.log(whichTree);
 
+
+	//check if we've gotten all trees, if we have then set up the markers
 	if (whichTree < (treeArray.length - 1)) {
-		whichTree++;
 
-		getTweets();
-
+		whichTree++; //move on to the next tree for next iteration
+		getTweets(); //get the next set of tweets
 
 	} else {
 
+		//set up our markers
 		setMarkers();
+
 	}
-	
-
-
-
 
 }
 
 
+//set up all the data for the markers
 var setMarkers = function(){
 	console.log("here");
 	console.log(treeArray[0][0]);
@@ -214,9 +217,9 @@ var setMarkers = function(){
 		"properties": {
 			"title": treeArray[0][0],
 			"description": treeArray[0][2],
-			"marker-color": "#3ca0d3",
-			"marker-size": "large",
-			"marker-symbol": "park"
+			"marker-color": markerColor,
+			"marker-size": markerSize,
+			"marker-symbol": markerSymbol
 		}
 	},
 
@@ -229,9 +232,9 @@ var setMarkers = function(){
 		"properties": {
 			"title": treeArray[1][0],
 			"description": treeArray[1][2],
-			"marker-color": "#3ca0d3",
-			"marker-size": "large",
-			"marker-symbol": "park"
+			"marker-color": markerColor,
+			"marker-size": markerSize,
+			"marker-symbol": markerSymbol
 		}
 	},
 	{
@@ -243,9 +246,9 @@ var setMarkers = function(){
 		"properties": {
 			"title": treeArray[2][0],
 			"description": treeArray[2][2],
-			"marker-color": "#3ca0d3",
-			"marker-size": "large",
-			"marker-symbol": "park"
+			"marker-color": markerColor,
+			"marker-size": markerSize,
+			"marker-symbol": markerSymbol
 		}
 	}
 
