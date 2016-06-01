@@ -1,0 +1,34 @@
+form {
+	display: block;
+	width: 90%;
+	max-width: 500px;
+	margin: 0 auto;
+	
+	padding-bottom: 25px;
+}
+
+.formInput {
+	width: 100%;
+	padding-top: 25px;
+}
+
+.formInput label {
+	width: 100%;
+	display: block;
+	text-align: center;
+	padding-bottom: 5px;
+}
+
+.formInput input, .formInput textarea {
+	display: block;
+	margin: 0 auto;
+	width: 75%;
+}
+
+.button {
+	display: block;
+	margin: 0 auto;
+	margin-top: 25px;
+
+}
+
