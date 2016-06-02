@@ -83,21 +83,41 @@ header {
 
 	
 }
-
-#social {
-	position: absolute;
-	top: 20px;
-	right: 20px;
+.top-content {
+	width: 90%;
+	margin: 0 auto;
+	clear: both;
 }
 
-#social li {
-	display: inline-block;
+#left-content {
+	width: 60%;
+	float: left;
+}
+#right-content {
+	width: 40%;
+	float: left;
+
 }
 
-#social li a {
-	text-transform: uppercase;
-	padding: 10px 5px;
-	font-size: 2em;
+#right-content iframe {
+	height: 200px;
+}
+
+#left-content *, .bottom-content * {
+	padding-top: 10px;
+}
+
+.bottom-content {
+	width: 70%;
+	margin: 0 auto;
+}
+
+.example-tweet {
+	display: block;
+	width: 80%;
+	margin: 0 auto;
+	font-style: italic;
+	padding-bottom: 10px;
 }
 
 #map { 
@@ -110,8 +130,7 @@ header {
 }
 
 footer {
-	position: absolute;
-	bottom: 0;
+	
 	
 	width: 100%;
 	text-align: center;
