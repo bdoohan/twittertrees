@@ -85,6 +85,7 @@ header {
 }
 .top-content {
 	width: 90%;
+	max-width: 900px;
 	margin: 0 auto;
 	clear: both;
 }
@@ -110,6 +111,7 @@ header {
 .bottom-content {
 	width: 70%;
 	margin: 0 auto;
+	clear: both;
 }
 
 .example-tweet {
