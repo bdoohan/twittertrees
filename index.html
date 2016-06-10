@@ -15,8 +15,8 @@
 <body>
 
     <header>
-     <img id="main-logo" src="img/mainlogo.png" alt="#TreeSpeech"/>
-     <ul class="menu" id="big-nav">
+       <img id="main-logo" src="img/mainlogo.png" alt="#TreeSpeech"/>
+       <ul class="menu" id="big-nav">
         <li class="menu-item"><a href="index.html">Home</a></li>
         <li class="menu-item"><a href="faq.html">FAQ</a></li>
         <li class="menu-item"><a href="map.html">Map</a></li>
@@ -37,19 +37,30 @@
     </ul>
 </header>
 
-<section class="top-content">
-    <h2>Give the trees of Jersey City a voice! Through Twitter.</h2> 
-    <div id="left-content">
+<h2 class="heading">Give the trees of Jersey City a voice! Through Twitter.</h2> 
 
-        
-        <a class="twitter-timeline" href="https://twitter.com/hashtag/treespeech" data-widget-id="736705480261701632">#treespeech Tweets</a>
-        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<section class="top-content">
+
+
+    <div class="left-content">
+
+        <h3 class="heading">What The Trees Are Saying!</h3>
+        <div  id="twitter-feed"class="container">
+            <a class="twitter-timeline" href="https://twitter.com/hashtag/treespeech" data-widget-id="736705480261701632">#treespeech Tweets</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+        </div>
 
     </div>
-    <div id="right-content">
+    <div class="right-content">
+        <div class="container">
+            <h3 class="heading">See Where We Live!</h3>
+            <a href="map.html"><img id="map-image" src="img/map.png" alt="Map Picture"/></a>
+        </div>
+        <div class="container">
 
-        <h3>Why Does our Tree Canopy Matter?</h3>
-        <p>Urban trees lower temperatures, utility costs, and building emissions substantially. They reduce stormwater runoff by absorbing thousands of gallons of rain each year. They help mitigate climate change impacts naturally and greatly improve our air quality and public health. The Jersey City Environmental Commission's July 2015 Tree Canopy Study recommends that our canopy coverage increase by 30,000 trees as a restorative measure. While local government has committed to planting 2,000 trees in parks over the next 5 years, more is needed and the community must help. TREE SPEECH would like to raise awareness of the dire need to maintain the City’s existing tree inventory and to plant more Street Trees.</p>
+            <h3 class="heading">Why Does our Tree Canopy Matter?</h3>
+            <p>Urban trees lower temperatures, utility costs, and building emissions substantially. They reduce stormwater runoff by absorbing thousands of gallons of rain each year. They help mitigate climate change impacts naturally and greatly improve our air quality and public health. The Jersey City Environmental Commission's July 2015 Tree Canopy Study recommends that our canopy coverage increase by 30,000 trees as a restorative measure. While local government has committed to planting 2,000 trees in parks over the next 5 years, more is needed and the community must help. TREE SPEECH would like to raise awareness of the dire need to maintain the City’s existing tree inventory and to plant more Street Trees.</p>
+        </div>
 
     </div>
     
@@ -61,12 +72,22 @@
 
 
 
-<footer><p>&copy; 2016 Tree Speech All Rights Reserved<br>Web Design by Bullfiddle Media LLC.</p></footer>
-<div id="tweecool"></div>
+<footer>
+    <div>
+
+        <a href="http://www.sustainablejc.org"><img id="sjc-logo" src="img/sjclogo.png" alt="Sustainable JC" /></a>
+    
+    <p>&copy; 2016 Tree Speech All Rights Reserved<br>Web Design by Bullfiddle Media LLC.</p>
+    
+
+</div>
+
+</footer>
+<!-- <div id="tweecool"></div> -->
 
 <script src="http://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
 
-<script src="js/tweecool.js" type="text/javascript"></script>
+<!-- <script src="js/tweecool.js" type="text/javascript"></script> -->
 
 <script src="js/app.js" type="text/javascript" charset="utf-8"></script>
 

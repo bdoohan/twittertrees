@@ -18,13 +18,6 @@ header {
 	z-index: 200;
 }
 
-/*#main-title {
-	padding: 20px 0;
-	margin: 0;
-	text-align: center;
-	font-weight: 300;
-	font-size: 2em;
-}*/
 
 #main-logo {
 	display: block;
@@ -32,6 +25,8 @@ header {
 	padding-top: 10px;
 	width: 200px;
 }
+
+
 
 .menu {
 	display: block;
@@ -48,7 +43,7 @@ header {
 .menu li a {
 	text-decoration: none;
 	color: black;
-	
+
 }
 
 
@@ -57,23 +52,23 @@ header {
 }
 
 #mobile-nav {
-	
+
 }
 
 
 #mobile-nav .menu-item {
 	display: none;
 	padding: 10px 0;
-	
+
 	background-color: white;
 }
 #mobile-nav #menu-bars {
-		display: inline-block;
-	}
+	display: inline-block;
+}
 
 #mobile-nav .menu-item a {
-	
-	
+
+
 	padding: 5px 10px;
 }
 
@@ -81,31 +76,52 @@ header {
 	border-right: 1px solid black;
 	border-left: 1px solid black;
 
-	
+
+}
+img {
+	width: 100%;
+}
+
+#map-image {
+	border: 1px solid rgba(15, 70, 100, .12);
+	border-radius: 10px;
+}
+
+.container {
+	width: 90%;
+	margin: 0 auto;
+}
+
+.heading {
+	text-align: center;
+	padding: 10px 0;
+}
+
+iframe {
+	border: none;
+	width: 95% !important;
+	margin: 0 auto !important;
+	display: block !important;
+}
+#twitter-feed {
+	border: 1px solid rgba(15, 70, 100, .12);
 }
 .top-content {
 	width: 90%;
 	max-width: 900px;
 	margin: 0 auto;
+	margin-top: 40px;
 	clear: both;
 }
 
-#left-content {
+.left-content {
 	width: 60%;
 	float: left;
 }
-#right-content {
+.right-content {
 	width: 40%;
 	float: left;
 
-}
-
-#right-content iframe {
-	height: 200px;
-}
-
-#left-content *, .bottom-content * {
-	padding-top: 10px;
 }
 
 .bottom-content {
@@ -128,19 +144,26 @@ header {
 	bottom:39px;
 	width: 100%;
 	z-index: 0;
-	
+
 }
 
 footer {
-	
-	
+	padding:15px 0;
 	width: 100%;
 	text-align: center;
 }
 
+#sjc-logo {
+
+	width: 200px;
+	vertical-align: middle;
+	padding-bottom: 10px;
+}
+
 footer p {
-	padding: 10px 0;
 	font-size: .7em;
+
+
 }
 
 #tweecool {
@@ -149,15 +172,15 @@ footer p {
 
 @media (min-width: 768px) {
 
-	
+
 
 	header {
-		
+
 	}
 	#main-logo {
 		width: 300px;
 	}
-#mobile-nav {
+	#mobile-nav {
 		display: none;
 	}
 	#big-nav {
@@ -165,26 +188,26 @@ footer p {
 	}
 	#big-nav .menu-item {
 		padding: 0 10px;
-	display: inline-block;
-}
+		display: inline-block;
+	}
 
 	#mobile-nav #menu-bars {
 		display: none;
 	}
 
 	#big-nav li a:hover {
-	border-bottom: 1px solid black;
-	border-top: 1px solid black;
+		border-bottom: 1px solid black;
+		border-top: 1px solid black;
 
-	
-}
+
+	}
 
 	#map { 
-	top:159px; 
-	bottom:39px;
+		top:159px; 
+		bottom:39px;
 
-	
-}
+
+	}
 
 
 
