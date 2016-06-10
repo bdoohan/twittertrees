@@ -91,7 +91,7 @@ $.fn.extend({
         	var hashpattern = /#+(\w+)/ig;
         	var pIMG, media, timestamp, abox, mtext;
 
-        	$.getJSON("https://www.api.tweecool.com/?screenname=" + o.username + "&count=" + o.limit, function(data) {
+        	$.getJSON("http://tweecool.com/api/?screenname=" + o.username + "&count=" + o.limit, function(data) {
         		if (data.errors || data == null) {
         			if (data.errors) {
         				wrapper.html(data.errors);
