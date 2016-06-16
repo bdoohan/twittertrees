@@ -18,6 +18,14 @@ header {
 	z-index: 200;
 }
 
+a {
+	color: #19920A;
+}
+
+a:hover {
+	color: #24d20f;
+}
+
 
 #main-logo {
 	display: block;
@@ -115,12 +123,12 @@ iframe {
 }
 
 .left-content {
-	width: 60%;
-	float: left;
+	width: 100%;
+	float: none;
 }
 .right-content {
-	width: 40%;
-	float: left;
+	width: 100%;
+	float: none;
 
 }
 
@@ -130,6 +138,49 @@ iframe {
 	clear: both;
 }
 
+.donate {
+	text-align: center;
+	padding-top: 10px;
+}
+
+.center-content {
+	width: 90%;
+	margin: 0 auto;
+	max-width: 600px;
+}
+
+.center-content h4 {
+	padding: 5px 0;
+}
+
+.center-content ul {
+	padding: 0;
+	list-style-type: none;
+}
+
+.center-content ul {
+	padding: 0;
+}
+
+.center-content li {
+
+	
+	padding: 5px 0;
+	margin: 0;
+}
+
+.center-content p {
+	padding: 5px 0;
+}
+
+.center-content .bold {
+	font-weight: bold;
+}
+
+.center-content .italic {
+	font-weight: normal;
+	font-style: italic;
+}
 .example-tweet {
 	display: block;
 	width: 80%;
@@ -201,6 +252,17 @@ footer p {
 
 
 	}
+
+
+	.left-content {
+	width: 60%;
+	float: left;
+}
+.right-content {
+	width: 40%;
+	float: right;
+
+}
 
 	#map { 
 		top:159px; 
