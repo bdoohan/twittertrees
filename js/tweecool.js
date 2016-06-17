@@ -90,6 +90,7 @@ $.fn.extend({
         	var usernamepattern = /@+(\w+)/ig;
         	var hashpattern = /#+(\w+)/ig;
         	var pIMG, media, timestamp, abox, mtext;
+        	console.log("here");
 
         	$.getJSON("http://tweecool.com/api/?screenname=" + o.username + "&count=" + o.limit, function(data) {
         		if (data.errors || data == null) {
