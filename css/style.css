@@ -18,13 +18,14 @@ header {
 	z-index: 200;
 }
 
-/*#main-title {
-	padding: 20px 0;
-	margin: 0;
-	text-align: center;
-	font-weight: 300;
-	font-size: 2em;
-}*/
+a {
+	color: #19920A;
+}
+
+a:hover {
+	color: #24d20f;
+}
+
 
 #main-logo {
 	display: block;
@@ -32,6 +33,8 @@ header {
 	padding-top: 10px;
 	width: 200px;
 }
+
+
 
 .menu {
 	display: block;
@@ -48,7 +51,7 @@ header {
 .menu li a {
 	text-decoration: none;
 	color: black;
-	
+
 }
 
 
@@ -57,23 +60,23 @@ header {
 }
 
 #mobile-nav {
-	
+
 }
 
 
 #mobile-nav .menu-item {
 	display: none;
 	padding: 10px 0;
-	
+
 	background-color: white;
 }
 #mobile-nav #menu-bars {
-		display: inline-block;
-	}
+	display: inline-block;
+}
 
 #mobile-nav .menu-item a {
-	
-	
+
+
 	padding: 5px 10px;
 }
 
@@ -81,23 +84,109 @@ header {
 	border-right: 1px solid black;
 	border-left: 1px solid black;
 
+
+}
+img {
+	width: 100%;
+}
+
+#map-image {
+	border: 1px solid rgba(15, 70, 100, .12);
+	border-radius: 10px;
+}
+
+.container {
+	width: 90%;
+	margin: 0 auto;
+}
+
+.heading {
+	text-align: center;
+	padding: 10px 0;
+}
+
+iframe {
+	border: none;
+	width: 95% !important;
+	margin: 0 auto !important;
+	display: block !important;
+}
+#twitter-feed {
+	border: 1px solid rgba(15, 70, 100, .12);
+}
+.top-content {
+	width: 90%;
+	max-width: 900px;
+	margin: 0 auto;
+	margin-top: 40px;
+	clear: both;
+}
+
+.left-content {
+	width: 100%;
+	float: none;
+}
+.right-content {
+	width: 100%;
+	float: none;
+
+}
+
+.bottom-content {
+	width: 70%;
+	margin: 0 auto;
+	clear: both;
+}
+
+.donate {
+	text-align: center;
+	padding-top: 10px;
+}
+
+.center-content {
+	width: 90%;
+	margin: 0 auto;
+	max-width: 600px;
+}
+
+.center-content h4 {
+	padding: 5px 0;
+}
+
+.center-content ul {
+	padding: 0;
+	list-style-type: none;
+}
+
+.center-content ul {
+	padding: 0;
+}
+
+.center-content li {
+
 	
+	padding: 5px 0;
+	margin: 0;
 }
 
-#social {
-	position: absolute;
-	top: 20px;
-	right: 20px;
+.center-content p {
+	padding: 5px 0;
 }
 
-#social li {
-	display: inline-block;
+.center-content .bold {
+	font-weight: bold;
 }
 
-#social li a {
-	text-transform: uppercase;
-	padding: 10px 5px;
-	font-size: 2em;
+.center-content .italic {
+	font-weight: normal;
+	font-style: italic;
+}
+.example-tweet {
+	display: block;
+	width: 80%;
+	margin: 0 auto;
+	font-style: italic;
+	padding-bottom: 10px;
 }
 
 #map { 
@@ -106,20 +195,32 @@ header {
 	bottom:39px;
 	width: 100%;
 	z-index: 0;
-	
+
 }
 
 footer {
-	position: absolute;
-	bottom: 0;
-	
+	padding:15px 0;
 	width: 100%;
 	text-align: center;
 }
 
+#mapfooter {
+	position: absolute;
+	bottom: 0;
+	background-color: white;
+}
+
+#sjc-logo {
+
+	width: 150px;
+	vertical-align: middle;
+	padding-bottom: 10px;
+}
+
 footer p {
-	padding: 10px 0;
 	font-size: .7em;
+
+
 }
 
 #tweecool {
@@ -128,15 +229,15 @@ footer p {
 
 @media (min-width: 768px) {
 
-	
+
 
 	header {
-		
+
 	}
 	#main-logo {
 		width: 300px;
 	}
-#mobile-nav {
+	#mobile-nav {
 		display: none;
 	}
 	#big-nav {
@@ -144,26 +245,37 @@ footer p {
 	}
 	#big-nav .menu-item {
 		padding: 0 10px;
-	display: inline-block;
-}
+		display: inline-block;
+	}
 
 	#mobile-nav #menu-bars {
 		display: none;
 	}
 
 	#big-nav li a:hover {
-	border-bottom: 1px solid black;
-	border-top: 1px solid black;
+		border-bottom: 1px solid black;
+		border-top: 1px solid black;
 
-	
+
+	}
+
+
+	.left-content {
+	width: 60%;
+	float: left;
+}
+.right-content {
+	width: 40%;
+	float: right;
+
 }
 
 	#map { 
-	top:159px; 
-	bottom:39px;
+		top:159px; 
+		bottom:128px;
 
-	
-}
+
+	}
 
 
 
