@@ -26,8 +26,9 @@ var markerSymbol = "park";
 
 
 //add the trees to an array
-var treeArray = [["Danny_TS1", [-74.0575039, 40.7472462], ""], ["TS_Arlene",[-74.106226, 40.709112], ""], ["TS_Beatrice", [-74.047021, 40.723329], ""]];
+var treeArray = [["DannytheTree", [-74.0575039, 40.7472462], ""], ["Arlene_the_Tree",[-74.106226, 40.709112], ""], ["TS_Beatrice", [-74.047021, 40.723329], ""], ["MoribundtheTree", [-74.103397, 40.705034], ""], ["ReginaldTheTree",[-74.056911, 40.747529], ""]];
 
+console.log(treeArray.length);
 // ["username", [-74.0575039, 40.7472462], ""]   leave the last spot blank, that is assigned later.
 
 // how to get the tree info
@@ -90,8 +91,9 @@ $.fn.extend({
         	var usernamepattern = /@+(\w+)/ig;
         	var hashpattern = /#+(\w+)/ig;
         	var pIMG, media, timestamp, abox, mtext;
+        	console.log("here");
 
-        	$.getJSON("https://www.api.tweecool.com/?screenname=" + o.username + "&count=" + o.limit, function(data) {
+        	$.getJSON("http://tweecool.com/api/?screenname=" + o.username + "&count=" + o.limit, function(data) {
         		if (data.errors || data == null) {
         			if (data.errors) {
         				wrapper.html(data.errors);
@@ -250,7 +252,39 @@ var setMarkers = function(){
 			"marker-size": markerSize,
 			"marker-symbol": markerSymbol
 		}
+	},
+
+	{
+		"type": "Feature",
+		"geometry": {
+			"type": "Point",
+			"coordinates": [treeArray[3][1][0],treeArray[3][1][1]]
+		},
+		"properties": {
+			"title": treeArray[3][0],
+			"description": treeArray[3][2],
+			"marker-color": markerColor,
+			"marker-size": markerSize,
+			"marker-symbol": markerSymbol
+		}
+	},
+
+	{
+		"type": "Feature",
+		"geometry": {
+			"type": "Point",
+			"coordinates": [treeArray[4][1][0],treeArray[4][1][1]]
+		},
+		"properties": {
+			"title": treeArray[4][0],
+			"description": treeArray[4][2],
+			"marker-color": markerColor,
+			"marker-size": markerSize,
+			"marker-symbol": markerSymbol
+		}
 	}
+
+
 
 	];
 
