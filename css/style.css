@@ -204,9 +204,15 @@ footer {
 	text-align: center;
 }
 
+#mapfooter {
+	position: absolute;
+	bottom: 0;
+	background-color: white;
+}
+
 #sjc-logo {
 
-	width: 200px;
+	width: 150px;
 	vertical-align: middle;
 	padding-bottom: 10px;
 }
@@ -266,7 +272,7 @@ footer p {
 
 	#map { 
 		top:159px; 
-		bottom:39px;
+		bottom:128px;
 
 
 	}
