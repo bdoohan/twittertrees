@@ -26,7 +26,7 @@ var markerSymbol = "park";
 
 
 //add the trees to an array
-var treeArray = [["Danny_TS1", [-74.0575039, 40.7472462], ""], ["TS_Arlene",[-74.106226, 40.709112], ""], ["TS_Beatrice", [-74.047021, 40.723329], ""]];
+var treeArray = [["DannytheTree", [-74.0575039, 40.7472462], ""], ["Arlene_the_Tree",[-74.106226, 40.709112], ""], ["BeatricetheTree", [-74.047021, 40.723329], ""]];
 
 // ["username", [-74.0575039, 40.7472462], ""]   leave the last spot blank, that is assigned later.
 
