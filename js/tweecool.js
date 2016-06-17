@@ -26,9 +26,8 @@ var markerSymbol = "park";
 
 
 //add the trees to an array
-var treeArray = [["DannytheTree", [-74.0575039, 40.7472462], ""], ["Arlene_the_Tree",[-74.106226, 40.709112], ""], ["TS_Beatrice", [-74.047021, 40.723329], ""], ["MoribundtheTree", [-74.103397, 40.705034], ""], ["ReginaldTheTree",[-74.056911, 40.747529], ""]];
+var treeArray = [["ReginaldTheTree", [-74.056911, 40.747529], ""],["MoribundtheTree", [-74.103397, 40.705034], ""],["DannytheTree", [-74.0575039, 40.7472462], ""], ["Arlene_the_Tree",[-74.106226, 40.709112], ""], ["BeatricetheTree", [-74.047021, 40.723329], ""]];
 
-console.log(treeArray.length);
 // ["username", [-74.0575039, 40.7472462], ""]   leave the last spot blank, that is assigned later.
 
 // how to get the tree info
@@ -91,7 +90,6 @@ $.fn.extend({
         	var usernamepattern = /@+(\w+)/ig;
         	var hashpattern = /#+(\w+)/ig;
         	var pIMG, media, timestamp, abox, mtext;
-        	console.log("here");
 
         	$.getJSON("http://tweecool.com/api/?screenname=" + o.username + "&count=" + o.limit, function(data) {
         		if (data.errors || data == null) {
@@ -253,7 +251,6 @@ var setMarkers = function(){
 			"marker-symbol": markerSymbol
 		}
 	},
-
 	{
 		"type": "Feature",
 		"geometry": {
@@ -268,7 +265,6 @@ var setMarkers = function(){
 			"marker-symbol": markerSymbol
 		}
 	},
-
 	{
 		"type": "Feature",
 		"geometry": {
@@ -283,8 +279,6 @@ var setMarkers = function(){
 			"marker-symbol": markerSymbol
 		}
 	}
-
-
 
 	];
 
