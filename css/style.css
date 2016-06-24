@@ -38,13 +38,10 @@ a:hover {
 	position: absolute;
 	top: 2px;
 	left: 10px;
+	width: 100px;
 }
 
-#sjc-logo img {
 
-	width: 50px;
-	
-}
 
 
 #main-logo {
@@ -256,12 +253,12 @@ footer p {
 	#sjc-line {
 	height: 27px;
 }
-	#sjc-logo img {
+#sjc-logo {
+	left: 40px;
+	width: 200px;
 
-	width: 100px;
-	
-	
 }
+
 	#mobile-nav {
 		display: none;
 	}
