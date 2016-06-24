@@ -190,6 +190,11 @@ iframe {
 	padding: 5px 0;
 }
 
+.center-content form {
+	padding-top: 40px;
+	text-align: center;
+}
+
 .center-content .bold {
 	font-weight: bold;
 }
