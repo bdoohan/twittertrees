@@ -164,6 +164,7 @@ iframe {
 	width: 90%;
 	margin: 0 auto;
 	max-width: 600px;
+	min-height: calc(100vh - 69px - 132px);
 }
 
 .center-content h4 {
@@ -295,6 +296,9 @@ footer p {
 	width: 40%;
 	float: right;
 
+}
+.center-content {
+	min-height: calc(100vh - 69px - 179px);
 }
 
 	#map { 
