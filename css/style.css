@@ -26,11 +26,28 @@ a:hover {
 	color: #24d20f;
 }
 
+#sjc-line {
+	height: 15px;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #ffff66;
+}
+#sjc-logo {
+	position: absolute;
+	top: 2px;
+	left: 10px;
+	width: 100px;
+}
+
+
+
 
 #main-logo {
 	display: block;
 	margin: 0 auto;
-	padding-top: 10px;
+	padding-top: 20px;
 	width: 200px;
 }
 
@@ -147,6 +164,7 @@ iframe {
 	width: 90%;
 	margin: 0 auto;
 	max-width: 600px;
+	min-height: calc(100vh - 69px - 132px);
 }
 
 .center-content h4 {
@@ -173,6 +191,11 @@ iframe {
 	padding: 5px 0;
 }
 
+.center-content form {
+	padding-top: 40px;
+	text-align: center;
+}
+
 .center-content .bold {
 	font-weight: bold;
 }
@@ -191,8 +214,8 @@ iframe {
 
 #map { 
 	position:absolute; 
-	top:122px; 
-	bottom:39px;
+	top:132px; 
+	bottom:69px;
 	width: 100%;
 	z-index: 0;
 
@@ -210,12 +233,7 @@ footer {
 	background-color: white;
 }
 
-#sjc-logo {
 
-	width: 150px;
-	vertical-align: middle;
-	padding-bottom: 10px;
-}
 
 footer p {
 	font-size: .7em;
@@ -235,8 +253,18 @@ footer p {
 
 	}
 	#main-logo {
+		padding-top: 30px;
 		width: 300px;
 	}
+	#sjc-line {
+	height: 27px;
+}
+#sjc-logo {
+	left: 40px;
+	width: 200px;
+
+}
+
 	#mobile-nav {
 		display: none;
 	}
@@ -269,10 +297,13 @@ footer p {
 	float: right;
 
 }
+.center-content {
+	min-height: calc(100vh - 69px - 179px);
+}
 
 	#map { 
-		top:159px; 
-		bottom:128px;
+		top:179px; 
+		bottom:69px;
 
 
 	}

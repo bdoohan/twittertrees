@@ -10,6 +10,7 @@
 	display: block;
 	margin: 0;
 	padding: 0;
+	min-height: calc(100vh - 69px - 132px);
 
 }
 
@@ -19,7 +20,7 @@
 	margin: 0 auto;
 	list-style-type: none;
 	padding-top: 20px;
-	border-bottom: 1px black solid;
+	border-bottom: 1px lightgray solid;
 }
 
 .tumblr_post img {
@@ -49,4 +50,10 @@
 
 footer {
 	position: relative;
+}
+
+@media (min-width: 768px) {
+	.tumblr_posts {
+	min-height: calc(100vh - 69px - 179px);
+}
 }
