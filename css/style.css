@@ -114,6 +114,7 @@ img {
 
 .container {
 	width: 90%;
+
 	margin: 0 auto;
 }
 
@@ -130,6 +131,7 @@ iframe {
 }
 #twitter-feed {
 	border: 1px solid rgba(15, 70, 100, .12);
+	
 }
 .top-content {
 	width: 90%;
