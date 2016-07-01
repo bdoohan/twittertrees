@@ -1,5 +1,6 @@
 //add the trees to an array
 var treeArray = [
+["faith_tree", [-74.048640, 40.717723], ""],
 ["ReginaldTheTree", [-74.056911, 40.747529], ""],
 ["MoribundtheTree", [-74.103397, 40.705034], ""],
 ["DannytheTree", [-74.0575039, 40.7472462], ""], 
