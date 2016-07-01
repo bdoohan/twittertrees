@@ -20,10 +20,12 @@ header {
 
 a {
 	color: #19920A;
+	text-decoration: none;
 }
 
 a:hover {
 	color: #24d20f;
+	text-decoration: underline;
 }
 
 #sjc-line {
@@ -32,7 +34,7 @@ a:hover {
 	position: absolute;
 	top: 0;
 	left: 0;
-	background-color: #ffff66;
+	background-color: #eae958;
 }
 #sjc-logo {
 	position: absolute;
@@ -114,12 +116,13 @@ img {
 
 .container {
 	width: 90%;
+
 	margin: 0 auto;
 }
 
 .heading {
 	text-align: center;
-	padding: 10px 0;
+	padding: 50px 0 10px 0;
 }
 
 iframe {
@@ -130,6 +133,7 @@ iframe {
 }
 #twitter-feed {
 	border: 1px solid rgba(15, 70, 100, .12);
+
 }
 .top-content {
 	width: 90%;
@@ -168,7 +172,7 @@ iframe {
 }
 
 .center-content h4 {
-	padding: 5px 0;
+	padding: 25px 0 3px 0;
 }
 
 .center-content ul {
@@ -188,7 +192,11 @@ iframe {
 }
 
 .center-content p {
-	padding: 5px 0;
+	padding: 10px 0;
+}
+
+.center-content img {
+	padding: 10px 0;
 }
 
 .center-content form {
@@ -220,6 +228,8 @@ iframe {
 	z-index: 0;
 
 }
+
+
 
 footer {
 	padding:15px 0;
