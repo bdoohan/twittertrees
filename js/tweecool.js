@@ -148,8 +148,11 @@ $.fn.extend({
 					setTweets(stringy);
 					
 				});}).fail(function(jqxhr, textStatus, error) {
+
+
 				//var err = textStatus + ', ' + error;
-				wrapper.html('No tweets available 2');
+				//console.log('No tweets available');
+                setTweets(null);
 			});
 
 		});
@@ -195,10 +198,12 @@ var setTweets = function(theTweet) {
 
 //set up all the data for the markers
 var setMarkers = function(){
-	console.log("here");
-	console.log(treeArray[0][0]);
+	//console.log("here");
+	//console.log(treeArray[0][0]);
 
 	for (var i = 0; i < treeArray.length; i++) {
+
+        if (treeArray[i][2] != null) {
 
 		myMarkers.push({
 		"type": "Feature",
@@ -214,6 +219,7 @@ var setMarkers = function(){
 			"marker-symbol": markerSymbol
 		}
 	})
+        }
 		
 	};
 
