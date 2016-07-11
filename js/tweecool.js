@@ -84,7 +84,9 @@ $.fn.extend({
         	var hashpattern = /#+(\w+)/ig;
         	var pIMG, media, timestamp, abox, mtext;
 
+
         	$.getJSON("http://tweecool.com/api/?screenname=" + o.username + "&count=" + o.limit, function(data) {
+
         		if (data.errors || data == null) {
         			if (data.errors) {
         				wrapper.html(data.errors);
@@ -144,17 +146,22 @@ $.fn.extend({
 					wInner.append('<div class="tweets_txt">' + mtext.replace(urlpattern, '<a href="$1" target="_blank">$1</a>').replace(usernamepattern, '<a href="https://twitter.com/$1" target="_blank">@$1</a>').replace(hashpattern, '<a href="https://twitter.com/search?q=%23$1" target="_blank">#$1</a>') + media + ' <span>' + timestamp + '</span>' +abox+'</div>');
 					//set the tweet text to html
 					stringy = '<div class="tweets_txt">' + mtext.replace(urlpattern, '<a href="$1" target="_blank">$1</a>').replace(usernamepattern, '<a href="https://twitter.com/$1" target="_blank">@$1</a>').replace(hashpattern, '<a href="https://twitter.com/search?q=%23$1" target="_blank">#$1</a>') + media + ' <span>' + timestamp + '</span>' +abox+'</div>';
-					userlink = '<a href="https://twitter.com/' + o.username + '>' + o.username + '</a>';
-                    console.log(userlink);
+					userlink = '<a href="https://twitter.com/' + o.username + '">' + o.username + '</a>';
+                    
 					//set the tweets to the array
 					setTweets(stringy, userlink);
 					
 				});}).fail(function(jqxhr, textStatus, error) {
 
 
+
+
 				//var err = textStatus + ', ' + error;
+                stringy = '<a href="https://twitter.com/' + o.username + '">Click to view my tweets</a>';
+                userlink = '<a href="https://twitter.com/' + o.username + '">' + o.username + '</a>';
+
 				//console.log('No tweets available');
-                setTweets(null, userlink);
+                setTweets(stringy, userlink);
 			});
 
 		});
@@ -216,7 +223,7 @@ var setMarkers = function(){
 			"coordinates": [treeArray[i][1][0],treeArray[i][1][1]]
 		},
 		"properties": {
-			"title": treeArray[i][0],
+			"title": treeArray[i][3],
 			"description": treeArray[i][2],
 			"marker-color": markerColor,
 			"marker-size": markerSize,
