@@ -255,6 +255,21 @@ footer p {
 	display: none;
 }
 
+.leaflet-container a {
+	color: #19920A;
+	text-decoration: none;
+}
+
+.leaflet-container a:hover {
+	color: #24d20f;
+	text-decoration: underline;
+}
+
+.leaflet-container .marker-title {
+	font-size: 1.5em;
+	padding: 5px 0;
+}
+
 @media (min-width: 768px) {
 
 

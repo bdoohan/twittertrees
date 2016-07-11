@@ -9,6 +9,7 @@
 // for tweecool
 var wInner;
 var stringy;
+var userlink;
 
 // setting up the map
 var myMarkers = [];
@@ -83,7 +84,9 @@ $.fn.extend({
         	var hashpattern = /#+(\w+)/ig;
         	var pIMG, media, timestamp, abox, mtext;
 
+
         	$.getJSON("http://tweecool.com/api/?screenname=" + o.username + "&count=" + o.limit, function(data) {
+
         		if (data.errors || data == null) {
         			if (data.errors) {
         				wrapper.html(data.errors);
@@ -143,13 +146,22 @@ $.fn.extend({
 					wInner.append('<div class="tweets_txt">' + mtext.replace(urlpattern, '<a href="$1" target="_blank">$1</a>').replace(usernamepattern, '<a href="https://twitter.com/$1" target="_blank">@$1</a>').replace(hashpattern, '<a href="https://twitter.com/search?q=%23$1" target="_blank">#$1</a>') + media + ' <span>' + timestamp + '</span>' +abox+'</div>');
 					//set the tweet text to html
 					stringy = '<div class="tweets_txt">' + mtext.replace(urlpattern, '<a href="$1" target="_blank">$1</a>').replace(usernamepattern, '<a href="https://twitter.com/$1" target="_blank">@$1</a>').replace(hashpattern, '<a href="https://twitter.com/search?q=%23$1" target="_blank">#$1</a>') + media + ' <span>' + timestamp + '</span>' +abox+'</div>';
-					
+					userlink = '<a href="https://twitter.com/' + o.username + '">' + o.username + '</a>';
+                    
 					//set the tweets to the array
-					setTweets(stringy);
+					setTweets(stringy, userlink);
 					
 				});}).fail(function(jqxhr, textStatus, error) {
+
+
+
+
 				//var err = textStatus + ', ' + error;
-				wrapper.html('No tweets available 2');
+                stringy = '<a href="https://twitter.com/' + o.username + '">Click to view my tweets</a>';
+                userlink = '<a href="https://twitter.com/' + o.username + '">' + o.username + '</a>';
+
+				//console.log('No tweets available');
+                setTweets(stringy, userlink);
 			});
 
 		});
@@ -171,10 +183,12 @@ $('#tweecool').tweecool({
 }
 
 //set the tweet text
-var setTweets = function(theTweet) {
+var setTweets = function(theTweet, theName) {
 
 	//assign the tweet to the array spot
 	treeArray[whichTree][2] = theTweet;
+    treeArray[whichTree].push(theName);
+    console.log(treeArray[whichTree][3]);
 
 
 	//check if we've gotten all trees, if we have then set up the markers
@@ -195,10 +209,12 @@ var setTweets = function(theTweet) {
 
 //set up all the data for the markers
 var setMarkers = function(){
-	console.log("here");
-	console.log(treeArray[0][0]);
+	//console.log("here");
+	//console.log(treeArray[0][0]);
 
 	for (var i = 0; i < treeArray.length; i++) {
+
+        if (treeArray[i][2] != null) {
 
 		myMarkers.push({
 		"type": "Feature",
@@ -207,13 +223,14 @@ var setMarkers = function(){
 			"coordinates": [treeArray[i][1][0],treeArray[i][1][1]]
 		},
 		"properties": {
-			"title": treeArray[i][0],
+			"title": treeArray[i][3],
 			"description": treeArray[i][2],
 			"marker-color": markerColor,
 			"marker-size": markerSize,
 			"marker-symbol": markerSymbol
 		}
 	})
+        }
 		
 	};
 
